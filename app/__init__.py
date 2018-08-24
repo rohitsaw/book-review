@@ -116,16 +116,12 @@ def review():
         if result==[]:
             text=request.form.get("text")
             range=request.form.get("rating")
-            if len(text)>2:
-                print(len(text))
-                db.execute("INSERT INTO reviews (user_id, book_id, text_review, point_review) VALUES(:user_id, :book_id, :text_review, :point_review)",{"user_id":session['user_id'][0], "book_id":session['book_id'], "text_review":text, "point_review": range})
-                db.commit()
-                success_review=1
-                return render_template("success.html", name=session['name'], success_review=success_review)
-            else:
-                return render_template("error.html", name=session['name'], error=3)
+            db.execute("INSERT INTO reviews (user_id, book_id, text_review, point_review) VALUES(:user_id, :book_id, :text_review, :point_review)",{"user_id":session['user_id'][0], "book_id":session['book_id'], "text_review":text, "point_review": range})
+            db.commit()
+            success_review=1
+            return render_template("success.html", name=session['name'], success_review=success_review)
         else:
-            error=3
+            error=4
             return render_template("error.html", error=error )
     else:
         return redirect(url_for('LogIN'))
