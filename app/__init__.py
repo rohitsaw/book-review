@@ -75,9 +75,6 @@ def logout():
 def search():
     if 'user_id' in session:
         search=request.form.get("search")
-        if search is '':
-            loginerror=0
-            return render_template("error.html",loginerror=loginerror), 400
         search='%'+search+'%'
         searchtype=request.form.get("searchtype")
         result=db.execute("SELECT * FROM books WHERE title LIKE :search or isbn LIKE :search or author LIKE :search", {"search": search}).fetchall()

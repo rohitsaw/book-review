@@ -1,4 +1,20 @@
 {% extends "layout.html" %}
+
+{% block head %}
+<script>
+document.addEventListener('DOMContentLoaded', ()=>{
+	document.querySelector('#button').disabled=true;
+	document.querySelector('#searchForBook').onkeyup= ()=>{
+		if (document.querySelector('#searchForBook').value.length>0)
+			document.querySelector('#button').disabled=false;
+		else
+			document.querySelector('#button').disabled=true;
+	}
+})
+</script>
+
+{% endblock %}
+
 {% block heading %}
 	Book-Reviews
 {% endblock %}
@@ -12,8 +28,8 @@ hii {{name}}. Select dropdown in which result is shown!
 				<option value='isbn'>ISBN</option>
 				<option value='author'>AUTHOR</option>
 			</select>
-  <input name="search" type="text" placeholder="SEARCH ISBN/TITLE/AUTHOR ">
-	<button>Search</button>
+  <input id="searchForBook" name="search" type="text" placeholder="SEARCH ISBN/TITLE/AUTHOR ">
+	<button id="button">Search</button>
 </form>
 
 <div>

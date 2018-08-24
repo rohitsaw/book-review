@@ -11,11 +11,6 @@
 {% elif error==2 %}
 	<p>search result not exists</p>
 	<a href="{{url_for("index")}}">Go back</a>
-{% elif error==3 %}
-	<p>Blank input not allowed</p>
-	<a href="{{url_for("LogIN")}}">Go to Homepage</a>
-	<a></a>
-
 {% else %}
 	<p> you already submitted review for this book!</p>
 	<a href="{{url_for("LogIN")}}">Go to Homepage</a>

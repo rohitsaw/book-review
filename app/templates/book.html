@@ -4,12 +4,12 @@
 	<script>
 	{% if flag==0 %}
 	document.addEventListener('DOMContentLoaded', ()=>{
-		document.querySelector("#review_submit").disabled=true;
+		document.querySelector("#button").disabled=true;
 		document.querySelector('#review').onkeyup= ()=>{
 			if (document.querySelector('#review').value.length>0)
-				document.querySelector('#review_submit').disabled=false;
+				document.querySelector('#button').disabled=false;
 			else
-				document.querySelector('#review_submit').disabled=true;
+				document.querySelector('#button').disabled=true;
 		}
 	})
 	{% endif %}
@@ -59,7 +59,7 @@
   		<input name="rating" width="300" type="range" class="slider" min="1" max="5" onchange="updateTextInput(this.value)">
 			</div>
 			<div class="row">
-			<button id="review_submit">Submit!</button>
+			<button id="button">Submit!</button>
 			</div>
 	</form>
 	</div>
