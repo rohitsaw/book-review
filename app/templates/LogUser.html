@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block heading %}
+	Book-Reviews
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+hii {{name}}. Select dropdown in which result is shown!
+<form action="{{url_for('search')}}" method="post">
+		<select  name="searchtype" class="dropdown">
+				<option value='title'>TITLE</option>
+				<option value='isbn'>ISBN</option>
+				<option value='author'>AUTHOR</option>
+			</select>
+  <input name="search" type="text" placeholder="SEARCH ISBN/TITLE/AUTHOR ">
+	<button>Search</button>
+</form>
+
+<div>
+<a href="{{url_for("logout")}}" method="post">Log Out!</a>
+</div>
+</div>
+{% endblock %}

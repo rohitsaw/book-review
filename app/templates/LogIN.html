@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+	fill your details carefully...
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+<div class="container">
+<form action="{{url_for("Loguser")}}" method="post">
+	<input name="name" type="text" placeholder="enter your username">
+	<input name="password" type="password" placeholder="password">
+	<button>Log IN!</button>
+</form>
+<a href="{{ url_for("index")}}">sign up!</a>
+</div>
+</div>
+
+{% endblock %}

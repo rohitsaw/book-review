@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block heading %}
+	Book-Reviews
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+<div class="container">
+<ul>
+<p>SignUP or LogIN?</p>
+<li><form action="{{url_for("Registration")}}" method="post">
+	<button>New Registration!</button>
+</form>
+</li>
+
+<li>
+<form action="{{url_for("LogIN")}}" method="post">
+	<button>Log In!</button>
+</form>
+</li>
+</ul>
+</div>
+</div>
+{% endblock %}

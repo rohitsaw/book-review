@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block heading %}
+{% if success_review %}
+	Hi {{name}}!! Review submitted successfully!
+{% else %}
+	Hi {{name}}!! Registration Successfull! Login with your username and password...
+{% endif %}
+
+{% endblock %}
+
+{% block body %}
+
+{% if success_review %}
+	<a href="{{url_for("index")}}">Go to Homepage!</a>
+{% else %}
+	<a href="{{url_for("LogIN")}}">Go back to login</a>
+{% endif %}
+
+{% endblock %}

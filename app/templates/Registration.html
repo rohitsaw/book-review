@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block heading %}
+	Give yours details!
+{% endblock %}
+
+{% block body %}
+<div class="container">
+<form action="{{url_for("Success")}}" method="post">
+	<input name="name" type="text" placeholder="enter your username">
+	<input name="password" type="password" placeholder="enter your password">
+	<button>Sign Up!</button>
+</form>
+</div>
+{% endblock %}

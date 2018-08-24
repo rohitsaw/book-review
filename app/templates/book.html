@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block head %}
+	<script>
+	function updateTextInput(val) {
+          document.querySelector('#center').innerHTML=val;
+        }
+	</script>
+{% endblock %}
+
+{% block heading %}
+	book details
+{% endblock %}
+
+{% block body %}
+
+  <div class="container-fluid">
+		<div class="row">
+		<div class="col-4">
+  <h3>Search Results!</h3>
+  <ul class="list-group">
+
+
+  <li class="list-group-item"><strong>Book Name:</strong> {{ book[0].title }}</li>
+  <li class="list-group-item"><strong>Book Author:</strong>  {{ book[0].author}}</li>
+  <li class="list-group-item"><strong>Publication Year:</strong>  {{ book[0].pyear}}</li>
+  <li class="list-group-item"><strong>ISBN NO:</strong> {{ book[0].isbn }}</li>
+  <li class="list-group-item"><strong>Goodreads No of rating:</strong> {{ no_of_rating }}</li>
+  <li class="list-group-item"><strong>Goodreads Average rating:</strong>  {{ avg_rating }}</li>
+
+</ul>
+			</div>
+
+
+{% if flag==0 %}
+	<div class="col-4">
+		<form action="{{url_for("review")}}" method="post">
+			<div class="row">
+				<h2>Submit your review</h2>
+				<textarea row="3" cols="50" name="text" placeholder="your review text!">  </textarea>
+			</div>
+
+			<div class="row">
+    	<h2>Pick your rating= </h2>
+      <div><h3 id="center">3</h3></div>
+		</div>
+		<div class="row">
+  		<input name="rating" width="300" type="range" class="slider" min="1" max="5" onchange="updateTextInput(this.value)">
+			</div>
+			<div class="row">
+			<button id="review_submit">Submit!</button>
+			</div>
+	</form>
+	</div>
+
+{% else %}
+	<div class="col-4">
+		<h2> Your Submitted Review</h2>
+	<textarea row="3" cols="50" readonly="readonly">{{ text }}</textarea>
+	<strong>point on scale of 5 :</strong> {{ range }}
+	<div><a href="{{url_for("LogIN")}}">Go to Homepage</a></div>
+	<div><a href="{{url_for("logout")}}">Log Out</a></div>
+
+	</div>
+{% endif %}
+</div>
+</div>
+{% endblock %}
