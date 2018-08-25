@@ -1,5 +1,21 @@
 {% extends "layout.html" %}
 
+{% block head %}
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+	document.querySelector("#button").disabled=true;
+	document.querySelector('#password').onkeyup=()=>{
+		 if ((document.querySelector("#name").value.length>0)&&(document.querySelector("#password").value.length>0))
+		 	document.querySelector("button").disabled=false;
+		else
+			document.querySelector("button").disabled=true;
+
+	};
+
+});
+</script>
+{% endblock %}
+
 {% block heading %}
 	fill your details carefully...
 {% endblock %}
@@ -8,9 +24,11 @@
 <div class="jumbotron">
 <div class="container">
 <form action="{{url_for("Loguser")}}" method="post">
-	<input name="name" type="text" placeholder="enter your username">
-	<input name="password" type="password" placeholder="password">
-	<button>Log IN!</button>
+	Username*:<br>
+	<input id="name" name="name" type="text" placeholder="enter your username"><br>
+	Password*:<br>
+	<input id="password" name="password" type="password" placeholder="password"><br><br>
+	<button id="button">Log IN!</button>
 </form>
 <a href="{{ url_for("Registration")}}">sign up!</a>
 </div>

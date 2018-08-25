@@ -40,7 +40,6 @@ def Success():
     name=request.form.get("name")
     password=request.form.get("password")
     user=db.execute("SELECT name FROM users WHERE name=:name",{"name":name}).fetchone()
-    print(user)
     if user is None:
         db.execute("INSERT INTO users (name, password) VALUES(:name,:password)",{"name": name,"password": password})
         db.commit()
@@ -81,6 +80,7 @@ def logout():
 def search():
     if 'user_id' in session:
         search=request.form.get("search")
+        search=search.title()
         search='%'+search+'%'
         searchtype=request.form.get("searchtype")
         result=db.execute("SELECT * FROM books WHERE title LIKE :search or isbn LIKE :search or author LIKE :search", {"search": search}).fetchall()
