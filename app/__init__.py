@@ -39,7 +39,8 @@ def Registration():
 def Success():
     name=request.form.get("name")
     password=request.form.get("password")
-    user=db.execute("SELECT name FROM users WHERE name=:name",{"name":name}).fetchall()
+    user=db.execute("SELECT name FROM users WHERE name=:name",{"name":name}).fetchone()
+    print(user)
     if user is None:
         db.execute("INSERT INTO users (name, password) VALUES(:name,:password)",{"name": name,"password": password})
         db.commit()
