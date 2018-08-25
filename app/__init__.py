@@ -31,7 +31,7 @@ def index():
         return render_template("LogUser.html",name=session['name'])
     return render_template("index.html")
 
-@app.route("/Registration", methods=["POST"])
+@app.route("/Registration", methods=["POST","GET"])
 def Registration():
     return render_template("Registration.html")
 
@@ -39,10 +39,15 @@ def Registration():
 def Success():
     name=request.form.get("name")
     password=request.form.get("password")
-    db.execute("INSERT INTO users (name, password) VALUES(:name,:password)",{"name": name,"password": password})
-    db.commit()
-    success_review=0
-    return render_template("success.html",name=name, success_review=success_review)
+    user=db.execute("SELECT name FROM users WHERE name=:name",{"name":name}).fetchall()
+    if user is None:
+        db.execute("INSERT INTO users (name, password) VALUES(:name,:password)",{"name": name,"password": password})
+        db.commit()
+        success_review=0
+        return render_template("success.html",name=name, success_review=success_review)
+    else:
+        error=0
+        return render_template("error.html", error=error)
 
 @app.route("/LogIN", methods=["POST", "GET"])
 def LogIN():

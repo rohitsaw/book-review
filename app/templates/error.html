@@ -8,6 +8,10 @@
 {% if error==1 %}
 	<p>either username or password is incorrect!</p>
 	<a href="{{url_for("LogIN")}}">Try again</a>
+{% elif error==0 %}
+	<p>username already Registered!</p>
+	<a href="{{url_for("Registration")}}">Try again with different username!</a>
+
 {% elif error==2 %}
 	<p>search result not exists</p>
 	<a href="{{url_for("index")}}">Go back</a>

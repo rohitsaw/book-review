@@ -1,4 +1,20 @@
 {% extends "layout.html" %}
+{% block head %}
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+	document.querySelector("#button").disabled=true;
+	document.querySelector('#button').onmouseover=()=>{
+		 if ((document.querySelector("#name").value.length>0)&&(document.querySelector("#password").value.length>0))
+		 	document.querySelector("button").disabled=false;
+		else
+			document.querySelector("button").disabled=true;
+
+	};
+
+});
+</script>
+{% endblock %}
+
 {% block heading %}
 	Give yours details!
 {% endblock %}
@@ -6,9 +22,9 @@
 {% block body %}
 <div class="container">
 <form action="{{url_for("Success")}}" method="post">
-	<input name="name" type="text" placeholder="enter your username">
-	<input name="password" type="password" placeholder="enter your password">
-	<button>Sign Up!</button>
+	<input id="name" name="name" type="text" placeholder="enter your username">
+	<input id="password" name="password" type="password" placeholder="enter your password">
+	<button id="button">Sign Up!</button>
 </form>
 </div>
 {% endblock %}
