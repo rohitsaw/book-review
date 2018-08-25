@@ -3,7 +3,7 @@
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
 	document.querySelector("#button").disabled=true;
-	document.querySelector('#button').onmouseover=()=>{
+	document.querySelector('#password').onkeyup=()=>{
 		 if ((document.querySelector("#name").value.length>0)&&(document.querySelector("#password").value.length>0))
 		 	document.querySelector("button").disabled=false;
 		else
