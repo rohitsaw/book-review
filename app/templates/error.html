@@ -13,7 +13,7 @@
 	<a href="{{url_for("Registration")}}">Try again with different username!</a>
 
 {% elif error==2 %}
-	<p>search result not exists</p>
+	<p>search result not exists in database</p>
 	<a href="{{url_for("index")}}">Go back</a>
 {% else %}
 	<p> you already submitted review for this book!</p>
