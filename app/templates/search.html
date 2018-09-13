@@ -9,7 +9,7 @@
   <h3>Your search result</h3>
 <ul class="list-group">
   <div class="row">
-    <div class="col-4">
+    <div class="col-8">
     {% for item in result %}
       {% if searchtype=="title" %}
         <li class="list-group-item"><a name="details" href="/book/{{ item.isbn }}">{{ item.title}}</a></li>
