@@ -47,12 +47,12 @@
 	<div class="col-4">
 		<form action="{{url_for("review")}}" method="post">
 			<div class="row">
-				<h2>Submit your review</h2>
+				<h3>Submit your review</h3>
 				<textarea id="review" row="3" cols="50" name="text" placeholder="your review text!">  </textarea>
 			</div>
 
 			<div class="row">
-    	<h2>Pick your rating= </h2>
+    	<h3>Pick your rating= </h3>
       <div><h3 id="center">3</h3></div>
 		</div>
 		<div class="row">
@@ -66,7 +66,7 @@
 
 {% else %}
 	<div class="col-4">
-		<h2> Your Submitted Review</h2>
+		<h3> Your Submitted Review</h3>
 	<textarea row="3" cols="50" readonly="readonly">{{ text }}</textarea>
 	<strong>point on scale of 5 :</strong> {{ range }}
 	<div><a href="{{url_for("LogIN")}}">Go to Homepage</a></div>
