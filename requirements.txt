@@ -1,4 +1,3 @@
-gunicorn
 Flask
 
 Flask-Session
